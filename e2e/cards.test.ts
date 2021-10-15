@@ -1,9 +1,8 @@
 import { http } from '../config/http';
-import * as faker from 'faker';
 
 describe('Cards:', function () {
   const idList = '60ec7973f09348111d97605c';
-  const cardName = faker.datatype.string(10);
+  const cardName = 'test_card';
   let cardData: any;
 
   beforeEach(async function () {
@@ -32,7 +31,7 @@ describe('Cards:', function () {
     });
 
     it('should update card name', async function () {
-      const newCardName = faker.datatype.string(10);
+      const newCardName = 'new_name';
       const { data, status } = await http.put(
         `/1/cards/${cardData.id}?name=${newCardName}`
       );
@@ -43,8 +42,8 @@ describe('Cards:', function () {
     });
 
     it('should create new card', async function () {
-      expect(Object.keys(cardData).length).toEqual(34);
       expect(cardData.name).toEqual(cardName);
+      expect(Object.keys(cardData).length).toEqual(34);
     });
   });
 });
