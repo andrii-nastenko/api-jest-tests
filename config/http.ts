@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const timeout = 5000;
 
@@ -8,6 +8,5 @@ export const http = axios.create({
     key: process.env.TRELLO_KEY,
     token: process.env.TRELLO_TOKEN
   },
-  headers: { 'Content-Type': 'application/json' },
   timeout
 });
