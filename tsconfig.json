@@ -7,7 +7,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "pretty": true,
-    "target": "ES2021",
+    "target": "ES5",
     "module": "CommonJS"
   }
 }
