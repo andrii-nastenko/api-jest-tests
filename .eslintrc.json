@@ -1,20 +1,28 @@
 {
   "env": {
     "es2021": true,
-    "node": true,
-    "jest/globals": true
+    "node": true
   },
-  "plugins": ["@typescript-eslint", "jest"],
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:jest/recommended",
-    "plugin:jest/style"
+    "standard-with-typescript",
+    "plugin:prettier/recommended"
   ],
-  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "json-format",
+    "jest"
+  ],
+  "settings": {
+    "json/json-with-comments-files": []
+  },
+  "overrides": [],
+  "ignorePatterns": [
+    "node_modules",
+    "package-lock.json"
+  ],
   "parserOptions": {
-    "ecmaVersion": 2021,
-    "sourceType": "module"
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
   "rules": {
     "jest/no-disabled-tests": "warn",
@@ -22,6 +30,28 @@
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/no-useless-constructor": "off",
+    "@typescript-eslint/consistent-indexed-object-style": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/prefer-ts-expect-error": "off",
+    "@typescript-eslint/no-invalid-void-type": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "crlf"
+      }
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "never"
+    ]
   }
 }
