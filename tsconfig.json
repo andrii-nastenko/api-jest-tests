@@ -1,13 +1,23 @@
 {
   "compilerOptions": {
     "strict": true,
-    "noEmitOnError": true,
+    "alwaysStrict": true,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
     "pretty": true,
     "target": "ES5",
-    "module": "CommonJS"
-  }
+    "module": "CommonJS",
+    "baseUrl": "./",
+    "paths": {
+      "*": [
+        "*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
