@@ -1,10 +1,10 @@
 import axios, {type AxiosInstance, type CreateAxiosDefaults} from 'axios';
 
 class BaseApiCaller {
-  static api: AxiosInstance;
-  timeout: number = 30000;
+  private readonly timeout = 30000;
+  api: AxiosInstance;
   constructor(config?: CreateAxiosDefaults<any> | undefined) {
-    axios.create({
+    this.api = axios.create({
       baseURL: process.env.TRELLO_API,
       params: {
         key: process.env.TRELLO_KEY,

@@ -1,19 +1,23 @@
 import {BaseApiCaller} from 'src/api/base-api-caller';
-import {type CreateCard, type UpdateCard} from 'src/types/cards';
+import {
+  type CardResponse,
+  type CreateCardPayload,
+  type UpdateCardPayload,
+} from 'src/types/cards';
 
 const API_PATH = '/1/cards';
 
 class CardsApiCaller extends BaseApiCaller {
-  static createCard({cardName, idList}: CreateCard): Promise<Record<any, any>> {
-    return this.api.post(API_PATH, {}, {params: {cardName, idList}});
+  createCard({cardName, idList}: CreateCardPayload): CardResponse {
+    return this.api.post(API_PATH, {}, {params: {name: cardName, idList}});
   }
-  static deleteCard(cardId: string): Promise<Record<any, any>> {
+  deleteCard(cardId: string): CardResponse {
     return this.api.delete(`${API_PATH}/${cardId}`);
   }
-  static updateCard({cardName, cardId}: UpdateCard): Promise<Record<any, any>> {
-    return this.api.put(`${API_PATH}/${cardId}`, {params: {cardName}});
+  updateCard({cardName, cardId}: UpdateCardPayload): CardResponse {
+    return this.api.put(`${API_PATH}/${cardId}`, {}, {params: {name: cardName}});
   }
-  static getCard(cardId: string): Promise<Record<any, any>> {
+  getCard(cardId: string): CardResponse {
     return this.api.get(`${API_PATH}/${cardId}`);
   }
 }
