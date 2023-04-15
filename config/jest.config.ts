@@ -1,17 +1,20 @@
 import 'tsconfig-paths/register.js';
 import 'config/dotenv';
-import type {JestConfigWithTsJest} from 'ts-jest';
+import {type Config} from 'jest';
 
-const config: JestConfigWithTsJest = {
-  rootDir: './..',
+const config: Config = {
+  rootDir: './../',
   preset: 'ts-jest',
   testEnvironment: 'node',
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
-  transformIgnorePatterns: ['<rootDir>/node_modules/'],
   testRegex: '.spec.ts$',
-  globalSetup: '<rootDir>/setup/api-setup.ts',
+  globalSetup: '<rootDir>/setup/global-setup.ts',
+  globalTeardown: '<rootDir>/setup/global-teardown.ts',
+  moduleDirectories: ['node_modules', '<rootDir>'],
+  transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  testTimeout: 60 * 1000,
 };
 
 export default config;
