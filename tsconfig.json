@@ -8,8 +8,11 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "pretty": true,
-    "target": "ES5",
+    "target": "ES6",
     "module": "CommonJS",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
       "*": [
@@ -17,6 +20,7 @@
       ]
     }
   },
+  "compileOnSave": true,
   "exclude": [
     "node_modules"
   ]
