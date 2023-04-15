@@ -8,6 +8,8 @@ export function createCards({
   idList,
 }: CreateCardsPayload): Promise<Array<Record<any, any>>> {
   return Promise.all(
-    times(count, () => CardsApiCaller.createCard({cardName: generateString(5), idList}))
+    times(count, () =>
+      new CardsApiCaller().createCard({cardName: generateString(5), idList})
+    )
   );
 }

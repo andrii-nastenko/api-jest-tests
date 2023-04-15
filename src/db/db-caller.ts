@@ -1,39 +1,31 @@
 import {
-  type Connection,
-  type ConnectionConfig,
   createConnection,
+  type Connection,
+  type ConnectionOptions,
   type QueryOptions,
-} from 'mysql';
+} from 'mysql2/promise';
 
 class DbCaller {
-  connection: Connection;
-  constructor(config?: ConnectionConfig) {
+  private readonly timeout = 30000;
+  connection: Promise<Connection>;
+  constructor(config?: ConnectionOptions) {
     this.connection = createConnection({
       host: process.env.DB_HOST,
       port: parseInt(process.env.DB_PORT),
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
+      insecureAuth: true,
+      connectTimeout: this.timeout,
+      connectionLimit: 1,
       ...config,
     });
   }
-  connect(): void {
-    this.connection.connect();
+  async disconnect(): Promise<void> {
+    await this.connection.then((con) => con.end());
   }
-  disconnect(): void {
-    this.connection.end();
-  }
-  query(params: string | QueryOptions): Promise<unknown> {
-    this.connect();
-    return new Promise((resolve, reject) => {
-      this.connection.query(params, (error, results) => {
-        if (error) reject(error);
-        else {
-          this.disconnect();
-          resolve(results);
-        }
-      });
-    });
+  execute(params: QueryOptions): Promise<any> {
+    return this.connection.then((con) => con.execute(params));
   }
 }
 
