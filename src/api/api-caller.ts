@@ -1,6 +1,6 @@
 import axios, {type AxiosInstance, type CreateAxiosDefaults} from 'axios';
 
-class BaseApiCaller {
+class ApiCaller {
   private readonly timeout = 30000;
   api: AxiosInstance;
   constructor(config?: CreateAxiosDefaults<any> | undefined) {
@@ -16,4 +16,4 @@ class BaseApiCaller {
   }
 }
 
-export {BaseApiCaller};
+export {ApiCaller};

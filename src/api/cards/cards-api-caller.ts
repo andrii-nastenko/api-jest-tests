@@ -1,4 +1,4 @@
-import {BaseApiCaller} from 'src/api/base-api-caller';
+import {ApiCaller} from 'src/api/api-caller';
 import {
   type CardResponse,
   type CreateCardPayload,
@@ -7,7 +7,7 @@ import {
 
 const API_PATH = '/1/cards';
 
-class CardsApiCaller extends BaseApiCaller {
+class CardsApiCaller extends ApiCaller {
   createCard({cardName, idList}: CreateCardPayload): CardResponse {
     return this.api.post(API_PATH, {}, {params: {name: cardName, idList}});
   }
