@@ -1,9 +1,9 @@
 import 'tsconfig-paths/register.js';
-import 'config/dotenv';
+import 'setup/dotenv';
 import {type Config} from 'jest';
 
 const config: Config = {
-  rootDir: './../',
+  rootDir: './',
   preset: 'ts-jest',
   testEnvironment: 'node',
   transform: {

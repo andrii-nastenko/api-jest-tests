@@ -8,7 +8,7 @@
     "packages:check-updates": "npm-check-updates",
     "packages:update": "ncu -u && npm i",
     "prepare": "husky install",
-    "test:api": "jest -c ./config/jest.config.ts",
+    "test:api": "jest -c jest.config.ts",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
