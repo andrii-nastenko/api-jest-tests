@@ -11,6 +11,9 @@ class ApiCaller {
         token: process.env.TRELLO_TOKEN,
       },
       timeout: this.timeout,
+      validateStatus: (status) => {
+        return status >= 200 && status < 500;
+      },
       ...config,
     });
   }

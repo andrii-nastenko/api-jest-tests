@@ -1,6 +1,6 @@
 import {CardsApiCaller} from 'src/api/cards/cards-api-caller';
 import {times} from 'lodash';
-import {generateString} from 'src/helpers/generator';
+import {generateString} from 'src/helpers/data-generator';
 import {type CreateCardsPayload} from 'src/types/cards';
 
 export function createCards({
