@@ -1,10 +1,11 @@
 import {CardsApiCaller} from 'src/api/cards/cards-api-caller';
-import {generateString} from 'src/helpers/generator';
+import {DataGenerator} from 'src/helpers/data-generator';
+import {Errors} from 'tests/cards/responses';
 
 describe('Cards:', () => {
   const cardsApiCaller = new CardsApiCaller();
   const idList = process.env.LIST_ID;
-  const cardName = generateString(5);
+  const cardName = DataGenerator.generateString(5);
   let cardData: Record<any, any>;
 
   beforeEach(async () => {
@@ -29,7 +30,7 @@ describe('Cards:', () => {
   });
 
   it('should update card name', async () => {
-    const newCardName = generateString(5);
+    const newCardName = DataGenerator.generateString(5);
     const {data, status} = await cardsApiCaller.updateCard({
       cardName: newCardName,
       cardId: cardData.id,
@@ -45,5 +46,12 @@ describe('Cards:', () => {
 
     expect(Object.keys(data)).toContain('limits');
     expect(status).toEqual(200);
+  });
+
+  it('should return error on getting not existing card', async () => {
+    const notExistingId = DataGenerator.generateStringOfNumbers(24);
+    const response = await cardsApiCaller.getCard(notExistingId);
+
+    expect(response).toEqual(Errors.cardNotFound);
   });
 });
