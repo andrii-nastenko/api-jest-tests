@@ -1,7 +1,9 @@
 import {CardsApiCaller} from 'src/api/cards/cards-api-caller';
 import {times} from 'lodash';
-import {generateString} from 'src/helpers/data-generator';
+import {DataGenerator} from 'src/helpers/data-generator';
 import {type CreateCardsPayload} from 'src/types/cards';
+
+const cardsApiCaller = new CardsApiCaller();
 
 export function createCards({
   count,
@@ -9,7 +11,7 @@ export function createCards({
 }: CreateCardsPayload): Promise<Array<Record<any, any>>> {
   return Promise.all(
     times(count, () =>
-      new CardsApiCaller().createCard({cardName: generateString(5), idList})
+      cardsApiCaller.createCard({cardName: DataGenerator.generateString(5), idList})
     )
   );
 }
