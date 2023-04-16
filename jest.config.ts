@@ -14,6 +14,7 @@ const config: Config = {
   globalTeardown: '<rootDir>/setup/global-teardown.ts',
   moduleDirectories: ['node_modules', '<rootDir>'],
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  setupFilesAfterEnv: ['jest-extended/all', 'jest-expect-message'],
   testTimeout: 60 * 1000,
 };
 

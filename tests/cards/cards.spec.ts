@@ -44,7 +44,7 @@ describe('Cards:', () => {
   it('should delete card', async () => {
     const {data, status} = await cardsApiCaller.deleteCard(cardData.id);
 
-    expect(Object.keys(data)).toContain('limits');
+    expect(Object.keys(data)).toInclude('limits');
     expect(status).toEqual(200);
   });
 
@@ -52,6 +52,6 @@ describe('Cards:', () => {
     const notExistingId = DataGenerator.generateStringOfNumbers(24);
     const response = await cardsApiCaller.getCard(notExistingId);
 
-    expect(response).toEqual(Errors.cardNotFound);
+    expect(response, 'expect error').toEqual(Errors.cardNotFound);
   });
 });
