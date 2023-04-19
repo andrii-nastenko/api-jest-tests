@@ -16,6 +16,11 @@ const config: Config = {
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   setupFilesAfterEnv: ['jest-extended/all', 'jest-expect-message'],
   testTimeout: 60 * 1000,
+  reporters: [
+    'default',
+    ['jest-junit', {outputDirectory: 'reports', outputName: 'report.xml'}],
+    // additional reporters, like testrail-reporter
+  ],
 };
 
 export default config;
