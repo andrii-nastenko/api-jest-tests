@@ -20,8 +20,7 @@ describe('Get sql queries from Users table:', () => {
       sql: 'SELECT Name, Age FROM users WHERE Id = 1',
     });
 
-    expect(response).toEqual(
-      expect.arrayContaining([expect.arrayContaining([{Name: 'Andrew', Age: 32}])])
-    );
+    expect(response[0]).toHaveLength(1);
+    expect(response[0]).toIncludeAllMembers([{Name: 'Andrew', Age: 32}]);
   });
 });
