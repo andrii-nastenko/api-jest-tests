@@ -46,9 +46,7 @@ export function checkCardResponse(data?: PartialDeep<CardResponse>): jest.Expect
           start: data?.badges?.start ?? expect.toBeOneOf([null, String, Number]),
         })
       : expect.any(Object),
-    checkItemStates: data?.checkItemStates?.length
-      ? data?.checkItemStates
-      : expect.any(Array),
+    checkItemStates: data?.checkItemStates ? data?.checkItemStates : expect.any(Array),
     closed: data?.closed ?? expect.any(Boolean),
     dueComplete: data?.dueComplete ?? expect.any(Boolean),
     dateLastActivity: data?.dateLastActivity ?? expect.any(String),
@@ -60,17 +58,15 @@ export function checkCardResponse(data?: PartialDeep<CardResponse>): jest.Expect
     dueReminder: data?.dueReminder ?? expect.toBeOneOf([null, String, Number]),
     email: data?.email ?? expect.toBeOneOf([null, String, Number]),
     idBoard: data?.idBoard ?? expect.any(String),
-    idChecklists: data?.idChecklists?.length ? data?.idChecklists : expect.any(Array),
+    idChecklists: data?.idChecklists ? data?.idChecklists : expect.any(Array),
     idList: data?.idList ?? expect.any(String),
-    idMembers: data?.idMembers?.length ? data?.idMembers : expect.any(Array),
-    idMembersVoted: data?.idMembersVoted?.length
-      ? data?.idMembersVoted
-      : expect.any(Array),
+    idMembers: data?.idMembers ? data?.idMembers : expect.any(Array),
+    idMembersVoted: data?.idMembersVoted ? data?.idMembersVoted : expect.any(Array),
     idShort: data?.idShort ?? expect.any(Number),
     idAttachmentCover:
       data?.idAttachmentCover ?? expect.toBeOneOf([null, String, Number]),
-    labels: data?.labels?.length ? data?.labels : expect.any(Array),
-    idLabels: data?.idLabels?.length ? data?.idLabels : expect.any(Array),
+    labels: data?.labels ? data?.labels : expect.any(Array),
+    idLabels: data?.idLabels ? data?.idLabels : expect.any(Array),
     manualCoverAttachment: data?.manualCoverAttachment ?? expect.any(Boolean),
     name: data?.name ?? expect.any(String),
     pos: data?.pos ?? expect.any(Number),

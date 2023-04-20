@@ -1,6 +1,6 @@
 import {faker} from '@faker-js/faker';
 
-export class DataGenerator {
+class DataGenerator {
   static generateString(length: number): string {
     return faker.random.alphaNumeric(length);
   }
@@ -8,3 +8,5 @@ export class DataGenerator {
     return faker.random.numeric(digitsCount);
   }
 }
+
+export {DataGenerator};
