@@ -3,15 +3,17 @@ import {times} from 'lodash';
 import {DataGenerator} from 'src/helpers/data-generator';
 import {type CreateCardsPayload} from 'src/types/cards';
 
-const cardsApiCaller = new CardsApiCaller();
-
-export function createCards({
-  count,
-  idList,
-}: CreateCardsPayload): Promise<Array<Record<any, any>>> {
-  return Promise.all(
-    times(count, () =>
-      cardsApiCaller.createCard({cardName: DataGenerator.generateString(5), idList})
-    )
-  );
+class CardsApiHelpers extends CardsApiCaller {
+  createCards({count, idList}: CreateCardsPayload): Promise<Array<Record<any, any>>> {
+    return Promise.all(
+      times(count, () =>
+        this.createCard({
+          cardName: DataGenerator.generateString(5),
+          idList,
+        })
+      )
+    );
+  }
 }
+
+export {CardsApiHelpers};
