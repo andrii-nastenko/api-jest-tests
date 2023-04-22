@@ -13,19 +13,19 @@ class CardsApiCaller extends ApiCaller {
     cardName,
     idList,
   }: CreateCardPayload): Promise<AxiosResponse<CardResponse>> {
-    return this.api.post(API_PATH, {}, {params: {name: cardName, idList}});
+    return this.post(API_PATH, {}, {params: {name: cardName, idList}});
   }
   deleteCard(cardId: string): Promise<AxiosResponse<CardResponse>> {
-    return this.api.delete(`${API_PATH}/${cardId}`);
+    return this.delete(`${API_PATH}/${cardId}`);
   }
   updateCard({
     cardName,
     cardId,
   }: UpdateCardPayload): Promise<AxiosResponse<CardResponse>> {
-    return this.api.put(`${API_PATH}/${cardId}`, {}, {params: {name: cardName}});
+    return this.put(`${API_PATH}/${cardId}`, {}, {params: {name: cardName}});
   }
   getCard(cardId: string): Promise<AxiosResponse<CardResponse>> {
-    return this.api.get(`${API_PATH}/${cardId}`);
+    return this.get(`${API_PATH}/${cardId}`);
   }
 }
 
