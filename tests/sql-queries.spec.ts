@@ -15,7 +15,7 @@ describe('Get sql queries from Users table:', () => {
     await dbCaller.disconnect();
   });
 
-  it('Get user name and age by id', async () => {
+  it('should get user name and age by id', async () => {
     const response = await dbCaller.execute({
       sql: 'SELECT Name, Age FROM users WHERE Id = 1',
     });
