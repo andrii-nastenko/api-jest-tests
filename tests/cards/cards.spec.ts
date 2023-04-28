@@ -1,11 +1,11 @@
 import {CardsApiCaller} from 'src/api/cards/cards-api-caller';
-import {DataGenerator} from 'src/helpers/data-generator';
 import {Errors, checkCardResponse} from 'tests/cards/responses';
+import {generateString, generateStringOfNumbers} from 'src/helpers/data-generator';
 
 describe('Cards:', () => {
   const cardsApiCaller = new CardsApiCaller();
   const idList = process.env.LIST_ID;
-  const cardName = DataGenerator.generateString(5);
+  const cardName = generateString(5);
   let cardData: Record<any, any>;
 
   beforeEach(async () => {
@@ -16,7 +16,7 @@ describe('Cards:', () => {
     await cardsApiCaller.deleteCard(cardData.id).catch((error) => error);
   });
 
-  it('should create new card', async () => {
+  it('should create new card', () => {
     expect(cardData).toEqual(checkCardResponse({name: cardName}));
     expect(cardData.name).toEqual(cardName);
     expect(Object.keys(cardData)).toHaveLength(34);
@@ -32,7 +32,7 @@ describe('Cards:', () => {
   });
 
   it('should update card name', async () => {
-    const newCardName = DataGenerator.generateString(5);
+    const newCardName = generateString(5);
     const {data, status} = await cardsApiCaller.updateCard({
       cardName: newCardName,
       cardId: cardData.id,
@@ -52,7 +52,7 @@ describe('Cards:', () => {
   });
 
   it('should return error on getting not existing card', async () => {
-    const notExistingId = DataGenerator.generateStringOfNumbers(24);
+    const notExistingId = generateStringOfNumbers(24);
     const response = await cardsApiCaller.getCard(notExistingId);
 
     expect(response, 'expect error').toEqual(Errors.cardNotFound);
