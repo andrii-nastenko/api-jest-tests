@@ -1,6 +1,6 @@
 {
   "env": {
-    "es2021": true,
+    "es2022": true,
     "node": true
   },
   "extends": [
@@ -29,38 +29,26 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/prefer-ts-expect-error": "off",
+    "@typescript-eslint/no-floating-promises": "error",
     "jest/valid-expect": [
       "error",
       {
         "maxArgs": 2
       }
     ],
-    "@typescript-eslint/restrict-template-expressions": "off",
-    "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/promise-function-async": "off",
-    "@typescript-eslint/lines-between-class-members": "off",
-    "@typescript-eslint/no-useless-constructor": "off",
-    "@typescript-eslint/consistent-indexed-object-style": "off",
-    "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/prefer-ts-expect-error": "off",
-    "@typescript-eslint/no-invalid-void-type": "off",
-    "@typescript-eslint/no-extraneous-class": "off",
     "prettier/prettier": [
       "error",
       {
-        "endOfLine": "auto"
-      },
-      {
-        "usePrettierrc": true
+        "endOfLine": "lf",
+        "bracketSpacing": false,
+        "singleQuote": true,
+        "printWidth": 90,
+        "tabWidth": 2
       }
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "object-curly-spacing": [
-      "error",
-      "never"
     ]
   }
 }
