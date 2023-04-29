@@ -4,18 +4,13 @@ import {type CreateCardsPayload} from 'src/types/cards';
 import {generateString} from 'src/helpers/data-generator';
 
 class CardsApiHelpers extends CardsApiCaller {
-  async createCards({
-    count,
-    idList,
-  }: CreateCardsPayload): Promise<Array<Record<any, any>>> {
-    return await Promise.all(
-      times(
-        count,
-        async () =>
-          await this.createCard({
-            cardName: generateString(5),
-            idList,
-          })
+  createCards({count, idList}: CreateCardsPayload): Promise<Array<Record<any, any>>> {
+    return Promise.all(
+      times(count, () =>
+        this.createCard({
+          cardName: generateString(5),
+          idList,
+        })
       )
     );
   }
