@@ -1,6 +1,6 @@
 import {CardsApiCaller} from 'src/api/cards/cards-api-caller';
 import {Errors, checkCardResponse} from 'tests/cards/responses';
-import {generateString, generateStringOfNumbers} from 'src/helpers/data-generator';
+import {generateString, generateStringNumber} from 'src/helpers/data-generator';
 
 describe('Cards:', () => {
   const cardsApiCaller = new CardsApiCaller();
@@ -52,7 +52,7 @@ describe('Cards:', () => {
   });
 
   it('should return error on getting not existing card', async () => {
-    const notExistingId = generateStringOfNumbers(24);
+    const notExistingId = generateStringNumber(24);
     const response = await cardsApiCaller.getCard(notExistingId);
 
     expect(response, 'expect error').toEqual(Errors.cardNotFound);
