@@ -22,12 +22,10 @@ class DbCaller {
     });
   }
   async disconnect(): Promise<void> {
-    await this.connection.then(async (con) => {
-      await con.end();
-    });
+    await (await this.connection).end();
   }
   async execute(params: QueryOptions): Promise<any> {
-    return await this.connection.then(async (con) => await con.execute(params));
+    return (await this.connection).execute(params);
   }
 }
 

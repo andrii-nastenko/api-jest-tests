@@ -9,23 +9,32 @@ import {type AxiosResponse} from 'axios';
 const API_PATH = '/1/cards';
 
 class CardsApiCaller extends ApiCaller {
-  async createCard({
+  constructor() {
+    super({
+      baseURL: process.env.TRELLO_API,
+      params: {
+        key: process.env.TRELLO_KEY,
+        token: process.env.TRELLO_TOKEN,
+      },
+    });
+  }
+  createCard({
     cardName,
     idList,
   }: CreateCardPayload): Promise<AxiosResponse<CardResponse>> {
-    return await this.post(API_PATH, {}, {params: {name: cardName, idList}});
+    return this.post(API_PATH, {}, {params: {name: cardName, idList}});
   }
-  async deleteCard(cardId: string): Promise<AxiosResponse<CardResponse>> {
-    return await this.delete(`${API_PATH}/${cardId}`);
+  deleteCard(cardId: string): Promise<AxiosResponse<CardResponse>> {
+    return this.delete(`${API_PATH}/${cardId}`);
   }
-  async updateCard({
+  updateCard({
     cardName,
     cardId,
   }: UpdateCardPayload): Promise<AxiosResponse<CardResponse>> {
-    return await this.put(`${API_PATH}/${cardId}`, {}, {params: {name: cardName}});
+    return this.put(`${API_PATH}/${cardId}`, {}, {params: {name: cardName}});
   }
-  async getCard(cardId: string): Promise<AxiosResponse<CardResponse>> {
-    return await this.get(`${API_PATH}/${cardId}`);
+  getCard(cardId: string): Promise<AxiosResponse<CardResponse>> {
+    return this.get(`${API_PATH}/${cardId}`);
   }
 }
 
