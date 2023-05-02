@@ -8,7 +8,14 @@ export function downloadSchema(
   return SwaggerParser.dereference(url);
 }
 
-/** Returns schema for particular endpoint by its relative path, method and status code */
+/**
+ * Get schema for particular endpoint by its relative path, method and status code
+ * @param {Object.<string, any>} schema Swagger parsed schema
+ * @param {string} path Relative endpoint path
+ * @param {string} method REST API methods, such as 'get', 'post', 'put, 'delete
+ * @param {number} statusCode Expected status code, such as 200, 201 and others
+ * @returns {Object.<string, any>} Returns schema object for requested endpoint
+ */
 export function getEndpointSchema(
   schema: Awaited<ReturnType<typeof SwaggerParser.dereference>>,
   path: string,
