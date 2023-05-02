@@ -4,6 +4,7 @@ import {
   getEndpointSchema,
   validateResponse,
 } from 'src/helpers/schema-validator';
+import {type Status} from 'src/types/pet-store';
 
 describe('Swagger schema/API response checks:', () => {
   const petStoreApiCaller = new PetStoreApiCaller();
@@ -13,11 +14,14 @@ describe('Swagger schema/API response checks:', () => {
     schema = await downloadSchema(process.env.SWAGGER_JSON_URL);
   });
 
-  it('should validate api response according to schema', async () => {
-    const {data} = await petStoreApiCaller.findByStatus('available');
-    const endpointSchema = getEndpointSchema(schema, '/pet/findByStatus', 'get', 200);
-    const response = validateResponse(endpointSchema, data);
+  it.each([{status: 'available'}, {status: 'sort'}, {status: 'pending'}])(
+    'should validate api response according to schema',
+    async ({status}) => {
+      const {data} = await petStoreApiCaller.findByStatus(status as Status);
+      const endpointSchema = getEndpointSchema(schema, '/pet/findByStatus', 'get', 200);
+      const response = validateResponse(endpointSchema, data);
 
-    expect(response).toEqual(true);
-  });
+      expect(response).toEqual(true);
+    }
+  );
 });
