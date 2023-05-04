@@ -45,6 +45,7 @@ export interface CardResponse {
   cover: Cover;
   isTemplate: boolean;
   cardRole?: null;
+  [key: string]: unknown;
 }
 
 export interface Badges {
@@ -63,6 +64,7 @@ export interface Badges {
   due?: null;
   dueComplete: boolean;
   start?: null;
+  [key: string]: unknown;
 }
 
 export interface AttachmentsByType {
@@ -87,4 +89,5 @@ export interface Cover {
   size: string;
   brightness: string;
   idPlugin?: null;
+  [key: string]: unknown;
 }

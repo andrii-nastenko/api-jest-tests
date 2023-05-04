@@ -1,7 +1,5 @@
 export type Status = 'available' | 'pending' | 'sort';
 
-export type PetsResponse = Pet[];
-
 export interface Pet {
   id: number;
   category: Category;
@@ -11,12 +9,8 @@ export interface Pet {
   status: string;
 }
 
-export interface Category {
-  id: number;
-  name: string;
-}
+export type PetsResponse = Pet[];
 
-export interface Tag {
-  id: number;
-  name: string;
-}
+export type Category = Pick<Pet, 'id' | 'name'>;
+
+export type Tag = Category;
