@@ -39,5 +39,11 @@ export function validateResponse(
     },
   });
   const validate = ajv.compile(endpointSchema);
-  return validate(endpointResponse);
+  const result = validate(endpointResponse);
+  if (result) {
+    return result;
+  } else {
+    console.error(validate.errors);
+    throw new Error('Schema validation error');
+  }
 }

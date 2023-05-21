@@ -1,6 +1,8 @@
 {
   "name": "api-tests",
   "version": "1.0.0",
+  "license": "MIT",
+  "author": "Andrii Nastenko",
   "description": "api-tests",
   "scripts": {
     "install-git-hooks": "husky install",
