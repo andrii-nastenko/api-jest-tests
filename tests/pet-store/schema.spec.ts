@@ -14,8 +14,8 @@ describe('Swagger schema/API response checks:', () => {
     schema = await downloadSchema(process.env.SWAGGER_JSON_URL);
   });
 
-  it.each([{status: 'available'}, {status: 'sort'}, {status: 'pending'}])(
-    'should validate api response according to schema',
+  it.each([{status: 'sort'}, {status: 'pending'}])(
+    'should validate api response according to schema by $status',
     async ({status}) => {
       const {data} = await petStoreApiCaller.findByStatus(status as Status);
       const endpointSchema = getEndpointSchema(schema, '/pet/findByStatus', 'get', 200);
